@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :trips
-  
+  has_many :stops
+  has_many :trips, through: :stops
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
