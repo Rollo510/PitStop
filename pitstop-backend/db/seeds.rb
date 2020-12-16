@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(:email => "test@test.com", :password => 'password', :password_confirmation => 'password')
+Trip.create(name: "Touring the South")
+Stop.create(location: "Atlanta, GA", review: "It was just ok.", user_id: 1, trip_id: 1)
