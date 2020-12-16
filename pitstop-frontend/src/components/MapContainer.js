@@ -11,6 +11,8 @@ const mapStyles = {
 class MapContainer extends Component {
     constructor(props) {
         super(props);
+    
+
         this.state = {
             markers: [],
             marker: {
@@ -25,17 +27,34 @@ class MapContainer extends Component {
 
     onClick = (t, map, coord) => {
         const { latLng } = coord;
-        let { marker } = this.state;
-        marker.position.lat = latLng.lat();
-        marker.position.lng = latLng.lng();
+        const newMarker = { position: {
+            lat: latLng.lat,
+            lng: latLng.lng
+        }}
+        newMarker.position.lat = latLng.lat();
+        newMarker.position.lng = latLng.lng();
         this.setState({
-            markers: [...this.state.markers, marker],
-            marker
+            markers: [...this.state.markers, newMarker],
+            marker: newMarker
         });
+        console.log(this.state)
     };
 
+    generateMarkers = () => {
+        return this.state.markers.map(
+            marker => {
+                return (
+                    <Marker 
+                    key={marker.id}
+                    position={{ lat: marker.position.lat, lng: marker.position.lng }}
+                    />
+                )
+            }
+        )
+    }
+
+
     render() {
-        const { marker } = this.state;
         return (<Map
             google={this.props.google}
             style={mapStyles}
@@ -46,7 +65,7 @@ class MapContainer extends Component {
                 lng: -95.3676974,
             }}
             onClick={this.onClick}>
-            <Marker position={{ lat: marker.position.lat, lng: marker.position.lng }} />
+            {this.generateMarkers()}
         </Map>);
     }
 }
