@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_many :stops
   has_many :trips, through: :stops
+  has_secure_password
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
 end
