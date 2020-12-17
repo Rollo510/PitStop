@@ -1,6 +1,6 @@
 export const getTrips = () => {
     return (dispatch) => {
-        fetch("http://localhost:3000/trips")
+        fetch("http://localhost:3001/trips")
         .then(resp => resp.json())
         .then(trips => dispatch({ type: "FETCH_TRIPS_SUCCESS", payload: trips })
         )}
@@ -8,7 +8,7 @@ export const getTrips = () => {
 
 export const createTrip = (data) => {
     return (dispatch) => {
-        fetch("http://localhost:3000/trips", {
+        fetch("http://localhost:3001/trips", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -23,9 +23,18 @@ export const createTrip = (data) => {
     }
 }
 
+export const getStops = () => {
+    return (dispatch) => {
+        fetch("http://localhost:3001/stops")
+            .then(resp => resp.json())
+            .then(trips => dispatch({ type: "FETCH_STOPS_SUCCESS", payload: trips })
+            )
+    }
+}
+
 export const newStop = (data) => {
     return (dispatch) => {
-        fetch('http://localhost:3000/stops', {
+        fetch('http://localhost:3001/stops', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -35,6 +44,12 @@ export const newStop = (data) => {
         })
         .then(resp => resp.json())
         .then(stop => dispatch({ type: 'ADD_STOP', payload: stop}))
+    }
+}
+
+export const storeMarkers = (data) => {
+    return (dispatch) => {
+        dispatch( {type: "STORE_MARKERS", payload: data })
     }
 }
 

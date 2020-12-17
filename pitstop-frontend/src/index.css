@@ -18,3 +18,8 @@ code {
   position: relative;
   margin-top: 150px;
 }
+
+#trip-form {
+  position: relative;
+  margin-right: 100px;
+}
