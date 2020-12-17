@@ -7,6 +7,7 @@ import StopsIndex from './components/StopsIndex'
 import { Component } from 'react';
 import NavBar from './components/NavBar'
 
+
 class App extends Component {
   render() {
     return (

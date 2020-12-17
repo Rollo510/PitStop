@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { connect } from 'react-redux'
+import { newStop } from '../redux/actions/tripActions'
 
 const mapStyles = {
     width: '70%',
@@ -12,7 +14,6 @@ class MapContainer extends Component {
     constructor(props) {
         super(props);
     
-
         this.state = {
             markers: [],
             marker: {
@@ -37,7 +38,7 @@ class MapContainer extends Component {
             markers: [...this.state.markers, newMarker],
             marker: newMarker
         });
-        console.log(this.state)
+        this.props.newStop(this.state.marker)
     };
 
     generateMarkers = () => {
@@ -70,6 +71,7 @@ class MapContainer extends Component {
     }
 }
 
+
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyA2P1oNRY7Jp7sbMsyojQg8N9jzqtG8y3U'
-})(MapContainer);
+})(connect(null, { newStop })(MapContainer));

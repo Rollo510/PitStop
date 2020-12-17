@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
     trips: tripReducer,
 });
 
-const store = createStore(
+let store = createStore(
     rootReducer,
     composeEnhancers(applyMiddleware(thunk))
 );
