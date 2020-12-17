@@ -9,17 +9,21 @@ class TripForm extends React.Component {
     state = {
         username: "",
         tripName: "",
-        stops: []
+        name: "",
+        review: ""
     }
 
     submit = (e) => {
         e.preventDefault();
+        debugger
         this.props.createTrip(this.state);
         this.setState({
             username: "",
-            tripName: ""
+            tripName: "",
+            name: "",
+            review: ""
         });
-        this.props.history.push("/trips")
+        // this.props.history.push("/trips")
     }
 
     generateMarkerForms = () => {
@@ -28,6 +32,11 @@ class TripForm extends React.Component {
                 return (
                     <StopForm
                         key={marker.id}
+                        name={this.state.name}
+                        review={this.state.review}
+                        onChange={(e) => this.setState({ 
+                            [e.target.name]: e.target.value
+                            })}
                         position={{ lat: marker.position.lat, lng: marker.position.lng }}
                         submit={this.submit}
                     />
@@ -41,15 +50,15 @@ class TripForm extends React.Component {
             <div id="trip-form">
                 <h1> Create a new Trip: </h1>
                 <form onSubmit={this.submit}>
-                    username: {" "}
+                    Username: {" "}
                     <input
                         onChange={(e) => this.setState({ username: e.target.value })}
                         type="text"
-                        value={this.state.name}
+                        value={this.state.username}
                     />
-                    tripName: {" "}
+                    Name your Trip: {" "}
                     <input 
-                        onChange={(e) => this.setState({ username: e.target.value })}
+                        onChange={(e) => this.setState({ tripName: e.target.value })}
                         type="text"
                         value={this.state.tripName}
                     />

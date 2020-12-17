@@ -1,26 +1,24 @@
 import React from 'react'
 
 class StopForm extends React.Component {
-    state = {
-        name: "",
-        review: ""
-    }
 
     render() {
         return (
             <div id="stop-form">
                 <form onSubmit={this.props.submit}>
-                    name: {" "}
+                    Location Name: {" "}
                     <input
-                        onChange={(e) => this.setState({ name: e.target.value })}
+                        onChange={this.props.onChange}
+                        name="name"
                         type="text"
-                        value={this.state.name}
+                        value={this.props.name}
                     />
-                    review: {" "}
+                    Review this Stop: {" "}
                     <input
-                        onChange={(e) => this.setState({ review: e.target.value })}
-                        type="text"
-                        value={this.state.review}
+                        onChange={this.props.onChange}
+                        name="review"
+                        type="textarea"
+                        value={this.props.review}
                     />
                 </form>
             </div>
