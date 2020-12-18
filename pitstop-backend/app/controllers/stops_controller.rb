@@ -8,6 +8,7 @@ class StopsController < ApplicationController
     end
 
     def create
+        byebug
         stop = Stop.new(stop_params)
         if stop.save
             render json: stop
@@ -23,7 +24,7 @@ class StopsController < ApplicationController
     private
 
     def stop_params
-        params.require(:stop).permit(:review, :position, :name)
+        params.require(:stop).permit(:review, :location, )
     end
 
 end

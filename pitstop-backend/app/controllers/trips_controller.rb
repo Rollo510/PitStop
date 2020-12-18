@@ -11,4 +11,16 @@ class TripsController < ApplicationController
         render json: trip
     end
 
+    def create
+        user = User.create(username: params[:username])
+        trip = Trip.find_or_create_by(name: params[:tripName])
+        params[:stops].each do |stop|
+            new_stop = stop[:name]
+            new_review = stop[:review]
+            params[:locations].each do |location|
+                new_place = Stop.create(name: new_stop, review: new_review, user_id: user.id, trip_id: trip.id, position: location[:position])
+            end
+        end
+    end
+
 end
