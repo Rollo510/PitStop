@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-import NavBar from './components/NavBar'
 import Home from './components/Home'
 import TripsIndex from './components/TripsIndex'
 import TripForm from './components/TripForm'
@@ -12,7 +11,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-            <NavBar />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/trips" component={TripsIndex} />

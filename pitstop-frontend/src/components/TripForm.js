@@ -3,27 +3,35 @@ import { connect } from 'react-redux'
 import { createTrip } from '../redux/actions/tripActions'
 import StopForm from './StopForm'
 import '../index.css';
+import { withRouter } from 'react-router-dom'
 
 class TripForm extends React.Component {
 
     state = {
         username: "",
         tripName: "",
-        name: "",
-        review: ""
     }
 
     submit = (e) => {
         e.preventDefault();
-        debugger
-        this.props.createTrip(this.state);
-        this.setState({
-            username: "",
-            tripName: "",
-            name: "",
-            review: ""
-        });
-        // this.props.history.push("/trips")
+        let newValue = this.getValueOfName(e);
+        this.props.createTrip(this.state, newValue)
+        this.props.history.push("/trips")
+    }
+
+    getValueOfName = (e) => {
+        let newArray = []
+        for (let i = 0; i < e.target.querySelectorAll(".stop-form").length; i++) {
+            let element = e.target.querySelectorAll(".stop-form")
+            const newObj = {}
+            let name = element[i].children[0].name.value
+            let review = element[i].children[0].review.value
+            newObj['name'] = name
+            newObj['review'] = review
+            console.log(newObj)
+            newArray.push(newObj)
+        }
+        return newArray
     }
 
     generateMarkerForms = () => {
@@ -34,9 +42,6 @@ class TripForm extends React.Component {
                         key={marker.id}
                         name={this.state.name}
                         review={this.state.review}
-                        onChange={(e) => this.setState({ 
-                            [e.target.name]: e.target.value
-                            })}
                         position={{ lat: marker.position.lat, lng: marker.position.lng }}
                         submit={this.submit}
                     />
@@ -77,4 +82,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { createTrip })(TripForm)
+export default withRouter(connect(mapStateToProps, { createTrip })(TripForm))

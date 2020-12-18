@@ -14,7 +14,6 @@ const mapStyles = {
 class MapContainer extends Component {
     constructor(props) {
         super(props);
-    
         this.state = {
             marker: {
                 available: false,
@@ -38,7 +37,7 @@ class MapContainer extends Component {
         this.setState({
             marker: newMarker
         });
-        this.props.newStop(this.state.marker)
+        //this.props.newStop(this.state.marker)
     };
 
     generateMarkers = () => {

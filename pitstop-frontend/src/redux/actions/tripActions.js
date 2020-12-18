@@ -6,15 +6,21 @@ export const getTrips = () => {
         )}
 }
 
-export const createTrip = (data) => {
+export const createTrip = (data, newValue) => {
     return (dispatch) => {
+        const newHash = {
+            username:data.username,
+            tripName:data.tripName,
+            stops:newValue
+        }
+
         fetch("http://localhost:3001/trips", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({ trip: data }),
+            body: JSON.stringify(newHash),
         })
             .then(resp => resp.json())
             .then(trip => 
