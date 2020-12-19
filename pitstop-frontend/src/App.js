@@ -6,20 +6,22 @@ import TripForm from './components/TripForm'
 import StopsIndex from './components/StopsIndex'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Router>
-            <Switch>
+      <Navbar>
+      <br />
+          <Router>
+            <Switch> 
               <Route exact path="/" component={Home} />
               <Route exact path="/trips" component={TripsIndex} />
               <Route path="/trips/new" component={TripForm} />
               <Route path="/stops" component={StopsIndex} />
-              {/* <Route path="/signUp" component={SignUp} />
-              <Route path="/signIn" component={SignIn} /> */}
             </Switch>
-        </Router>
+          </Router>
+      </Navbar>
       </div>
     );
   }

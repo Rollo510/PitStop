@@ -6,14 +6,14 @@ export const getTrips = () => {
         )}
 }
 
-export const createTrip = (data, newValue) => {
+export const createTrip = (data, newValue, locations) => {
     return (dispatch) => {
         const newHash = {
             username:data.username,
             tripName:data.tripName,
-            stops:newValue
+            stops:newValue,
+            locations
         }
-
         fetch("http://localhost:3001/trips", {
             method: "POST",
             headers: {

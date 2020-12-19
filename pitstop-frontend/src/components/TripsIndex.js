@@ -9,9 +9,17 @@ class TripsIndex extends React.Component {
     }
     
     render() {
+        const allTrips = this.props.trips.map(trip => {
+            return (<li key={trip.id} name={trip.name}>{trip.name}</li>)
+        })
+
+
         return (
             <div>
                 <h1> All Trips </h1>
+                <ul>
+                    {allTrips}
+                </ul>
             </div>
         )
     }
@@ -19,5 +27,11 @@ class TripsIndex extends React.Component {
 
 }
 
+const mapStateToProps = (state) => {
+    return {
+        trips: state.trips,
+    }
+}
 
-export default connect(null, { getTrips } )(TripsIndex)
+
+export default connect(mapStateToProps, { getTrips } )(TripsIndex)

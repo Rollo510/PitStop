@@ -15,7 +15,11 @@ class TripForm extends React.Component {
     submit = (e) => {
         e.preventDefault();
         let newValue = this.getValueOfName(e);
-        this.props.createTrip(this.state, newValue)
+        let stopPositions = [];
+        for (let i = 0; i < newValue.length; i++) {
+            stopPositions.push(this.props.markers[i])
+        }
+        this.props.createTrip(this.state, newValue, stopPositions)
         this.props.history.push("/trips")
     }
 
@@ -28,7 +32,6 @@ class TripForm extends React.Component {
             let review = element[i].children[0].review.value
             newObj['name'] = name
             newObj['review'] = review
-            console.log(newObj)
             newArray.push(newObj)
         }
         return newArray
