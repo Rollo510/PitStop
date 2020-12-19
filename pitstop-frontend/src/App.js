@@ -5,14 +5,14 @@ import TripsIndex from './components/TripsIndex'
 import TripForm from './components/TripForm'
 import StopsIndex from './components/StopsIndex'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import { Button } from 'antd';
+import './App.css'
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-      <Navbar>
-      <br />
+      <Button />
           <Router>
             <Switch> 
               <Route exact path="/" component={Home} />
@@ -21,7 +21,6 @@ class App extends React.Component {
               <Route path="/stops" component={StopsIndex} />
             </Switch>
           </Router>
-      </Navbar>
       </div>
     );
   }
