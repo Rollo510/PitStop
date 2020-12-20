@@ -1,0 +1,49 @@
+.trips-index-container{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.trips-index-children{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+.trips-index-children > div:first-child
+{
+    position: relative;
+    flex-grow: 1;
+}
+
+.trip-list-container
+{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.trip-list-header{
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+#trip-list
+{
+    list-style-type: none;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+}
+
+#trip-list > li
+{
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+#trip-list > li.selected{
+    text-decoration: underline;
+    color: green;
+}

@@ -8,7 +8,7 @@ function tripReducer(state = { trips: [], stops: [], markers: [], current_trip: 
             return {...state, stops: action.payload}
 
         case "ADD_TRIP":
-            return {...state, trips: [...state.trips, action.payload.trip], stops: {...state.stops, ...action.payload.stops}}
+            return {...state, trips: [...state.trips, action.payload.trip], stops: [...state.stops, ...action.payload.stops]}
 
         case "ADD_STOP":
             return { ...state, stops: [...state.stops, action.payload]}

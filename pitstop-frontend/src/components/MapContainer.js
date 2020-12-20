@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { connect } from 'react-redux'
-import { newStop, storeMarkers } from '../redux/actions/tripActions'
+import { newStop, storeMarkers, clearMarkers } from '../redux/actions/tripActions'
 
 
 const mapStyles = {
-    width: '70%',
-    height: '70%',
-    margin: '5%',
+    // margin: '5%',
     zoom: '100%',
 };
 
@@ -23,6 +21,10 @@ class MapContainer extends Component {
                 }
             }
         };
+    }
+
+    componentDidMount(){
+        this.props.clearMarkers();
     }
 
     onClick = (t, map, coord) => {
@@ -77,4 +79,4 @@ class MapContainer extends Component {
 
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyA2P1oNRY7Jp7sbMsyojQg8N9jzqtG8y3U'
-})(connect(mapStateToProps, { newStop, storeMarkers })(MapContainer));
+})(connect(mapStateToProps, { newStop, storeMarkers, clearMarkers })(MapContainer));
