@@ -3,6 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { connect } from 'react-redux'
 import { newStop, storeMarkers, clearMarkers } from '../redux/actions/tripActions'
 
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const mapStyles = {
     zoom: '100%',
@@ -77,5 +78,5 @@ class MapContainer extends Component {
     }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyA2P1oNRY7Jp7sbMsyojQg8N9jzqtG8y3U'
+    apiKey: `${API_KEY}`
 })(connect(mapStateToProps, { newStop, storeMarkers, clearMarkers })(MapContainer));

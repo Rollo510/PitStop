@@ -8,7 +8,6 @@ import Marker from 'google-maps-react'
 
 class StopsIndex extends React.Component {
 
-
     handleClick = (stop_id) => {
         let foundStop = this.props.stops.find(stop => (stop.id === parseInt(stop_id)))
         this.props.changeCurrentStop(foundStop);
