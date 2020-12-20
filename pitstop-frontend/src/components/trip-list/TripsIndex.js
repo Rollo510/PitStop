@@ -52,6 +52,7 @@ const mapStateToProps = (state) => {
     return {
         trips: state.trips,
         stops: state.stops,
+        markers: state.markers,
         current_trip: state.current_trip
     }
 }

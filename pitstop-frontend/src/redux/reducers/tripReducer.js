@@ -1,4 +1,4 @@
-function tripReducer(state = { trips: [], stops: [], markers: [], current_trip: null, current_stops: [] }, action) {
+function tripReducer(state = { trips: [], stops: [], markers: [], current_trip: null, current_stop: {}, current_stops: [] }, action) {
     switch(action.type) {
 
         case "FETCH_TRIPS_SUCCESS":
@@ -24,7 +24,10 @@ function tripReducer(state = { trips: [], stops: [], markers: [], current_trip: 
             const markers = current_stops.map(stop => {
                 return { position: {lat: stop.lat, lng: stop.lng} }
             })
-            return {...state, current_trip: action.payload, current_stops, markers }
+            return { ...state, current_trip: action.payload, current_stops, markers }
+
+        case "CHANGE_CURRENT_STOP":
+            return { ...state, current_stop: action.payload, markers: [{position: {lat: action.payload.lat, lng: action.payload.lng}}] }
 
 
         default:

@@ -69,4 +69,10 @@ export const changeCurrentTrip = (trip) => {
         dispatch( {type: "CHANGE_CURRENT_TRIP", payload: trip })
     }
 }
+
+export const changeCurrentStop = (stop) => {
+    return (dispatch) => {
+        dispatch({ type: "CHANGE_CURRENT_STOP", payload: stop })
+    }
+}
  

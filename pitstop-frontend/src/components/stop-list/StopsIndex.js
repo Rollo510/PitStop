@@ -1,18 +1,25 @@
 import React from 'react'
 import "./StopsIndex.css";
 import { connect } from 'react-redux'
-import { getTrips, clearMarkers, getStops, changeCurrentTrip } from '../../redux/actions/tripActions'
+import { getTrips, clearMarkers, getStops, changeCurrentStop } from '../../redux/actions/tripActions'
 import MapContainer from '../MapContainer'
 import ListGroup from 'react-bootstrap/ListGroup'
-
+import Marker from 'google-maps-react'
 
 class StopsIndex extends React.Component {
 
 
     handleClick = (stop_id) => {
         let foundStop = this.props.stops.find(stop => (stop.id === parseInt(stop_id)))
-        this.props.changeCurrentTrip(foundStop);
+        this.props.changeCurrentStop(foundStop);
+        this.generateMarker();
         return foundStop
+    }
+
+    generateMarker = () => {
+        return (
+            <Marker position={{ lat: this.props.current_stop.lat, lng: this.props.current_stop.lng }} />
+        )
     }
 
     
@@ -57,9 +64,10 @@ const mapStateToProps = (state) => {
     return {
         trips: state.trips,
         stops: state.stops,
-        current_trip: state.current_trip
+        markers: state.markers,
+        current_stop: state.current_stop
     }
 }
 
 
-export default connect(mapStateToProps, { getTrips, clearMarkers, getStops, changeCurrentTrip })(StopsIndex)
+export default connect(mapStateToProps, { getTrips, clearMarkers, getStops, changeCurrentStop })(StopsIndex)
