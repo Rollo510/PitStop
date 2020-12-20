@@ -5,7 +5,6 @@ import { newStop, storeMarkers, clearMarkers } from '../redux/actions/tripAction
 
 
 const mapStyles = {
-    // margin: '5%',
     zoom: '100%',
 };
 

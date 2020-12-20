@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getTrips, clearMarkers, getStops, changeCurrentTrip } from '../../redux/actions/tripActions'
 import MapContainer from '../MapContainer'
 import "./TripsIndex.css";
+import ListGroup from 'react-bootstrap/ListGroup'
 
 class TripsIndex extends React.Component {
 
@@ -18,7 +19,15 @@ class TripsIndex extends React.Component {
 
     render() {
         const allTrips = this.props.trips.map(trip => {
-            return (<li onClick={(e) => this.handleClick(e.target.id)} key={trip.id} id={trip.id} name={trip.name} className={(this.props.current_trip != null && trip.id === this.props.current_trip.id ? "selected" : "")}>{trip.name}</li>)
+            return (
+            <ListGroup.Item as="li"
+            onClick={(e) => this.handleClick(e.target.id)} 
+            key={trip.id} id={trip.id} name={trip.name} 
+            className={(this.props.current_trip != null && trip.id === this.props.current_trip.id ? "selected" : "")}
+            >
+            {trip.name}
+            </ListGroup.Item>
+            )
         })
 
 
@@ -27,11 +36,10 @@ class TripsIndex extends React.Component {
                 <h1 className="trip-list-header"> All Trips </h1>
                 <div className="trips-index-children">
                     <MapContainer />
-
                     <div className="trip-list-container">
-                        <ul id="trip-list">
+                        <ListGroup as="ul" id="trip-list">
                             {allTrips}
-                        </ul>
+                        </ListGroup>
                     </div>
                 </div>
             </div>

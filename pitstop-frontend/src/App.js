@@ -4,7 +4,7 @@ import React from 'react';
 import Home from './components/Home'
 import TripsIndex from './components/trip-list/TripsIndex'
 import TripForm from './components/TripForm'
-import StopsIndex from './components/StopsIndex'
+import StopsIndex from './components/stop-list/StopsIndex'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { getTrips, getStops } from './redux/actions/tripActions'

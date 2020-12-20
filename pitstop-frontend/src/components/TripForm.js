@@ -39,14 +39,13 @@ class TripForm extends React.Component {
     generateMarkerForms = () => {
         return this.props.markers.map(
             marker => {
-                return (
-                    <StopForm
-                        key={marker.id}
-                        name={this.state.name}
-                        review={this.state.review}
-                        lat={marker.position.lat}
-                        lng={marker.position.lng}
-                        submit={this.submit}
+                return ( <
+                    StopForm key = { marker.id }
+                    name = { this.state.name }
+                    review = { this.state.review }
+                    lat = { marker.position.lat }
+                    lng = { marker.position.lng }
+                    submit = { this.submit }
                     />
                 )
             }
@@ -54,28 +53,28 @@ class TripForm extends React.Component {
     }
 
     render() {
-        return (
-            <div id="trip-form">
-                <div id="trip-input">
-                <form onSubmit={this.submit}>
-                    Username: {" "}
-                    <input
-                        onChange={(e) => this.setState({ username: e.target.value })}
-                        type="text"
-                        value={this.state.username}
-                    />
-                    Name your Trip: {" "}
-                    <input 
-                        onChange={(e) => this.setState({ tripName: e.target.value })}
-                        type="text"
-                        value={this.state.tripName}
-                    />
-                    { this.generateMarkerForms() }
-                    <input type="submit" value="Create New Trip" />
-                </form>
+        return (<div id = "trip-form">
+                    <div id = "trip-input">
+                        <form onSubmit = { this.submit }>
+                        Username: { " " } 
+                            <input onChange = {(e) => this.setState({ username: e.target.value })}
+                            type = "text"
+                            value = { this.state.username }
+                            />
+                        <br/>
+                        Name your Trip: { " " } 
+                            <input onChange = {(e) => this.setState({ tripName: e.target.value })}
+                            type = "text"
+                            value = { this.state.tripName }
+                            />
+                        <br/> 
+                        { this.generateMarkerForms() }
+                        <br/> 
+                        <input type = "submit" value = "Create New Trip" />
+                        </form> 
+                    </div> 
                 </div>
-            </div>
-        )
+                )
     }
 }
 

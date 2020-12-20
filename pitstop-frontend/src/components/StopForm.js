@@ -13,7 +13,7 @@ class StopForm extends React.Component {
                         value={this.props.name}
                     />
                     Review this Stop: {" "}
-                    <input id="review-input"
+                    <textarea id="review-input"
                         name="review"
                         type="textarea"
                         value={this.props.review}
