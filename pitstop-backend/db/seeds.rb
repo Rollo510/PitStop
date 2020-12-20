@@ -8,4 +8,4 @@
 
 User.create(username: "kevin")
 Trip.create(name: "Touring the South")
-Stop.create(name: "Atlanta, GA", position: '{lat: 33.727317797736106, lng: -84.45557912528147}', review: "It was just ok.", user_id: 1, trip_id: 1)
+Stop.create(name: "Atlanta, GA", lat: 33.727317797736106, lng: -84.45557912528147, review: "It was just ok.", user_id: 1, trip_id: 1)
