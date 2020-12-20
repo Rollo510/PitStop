@@ -12,8 +12,17 @@ code {
     monospace;
 }
 
-#map {
-  width: 50%;
+#trip-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  list-style-type: none;
+}
+
+
+#map-container {
+  width: 70%;
   margin: 0 auto;
   position: relative;
   margin-top: 150px;
@@ -22,4 +31,43 @@ code {
 #trip-form {
   position: relative;
   margin-left: 80%;
+  display: flex;
+  align-items: center;
+}
+
+#trip-input {
+  display: flex;
+  align-content: center;
+}
+
+/* #review-input {
+  display: flex;
+  justify-content: flex-start;
+} */
+
+nav {
+text-align: center;
+margin: 0px 0 0 ;
+padding: 10px 0;
+}
+
+nav ul{
+  list-style: none;
+  margin: 0 2px;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+nav li {
+   display: inline-block;
+   padding: 5px 5px;
+}
+
+nav a {
+  font-weight: normal;
+  padding: 10px 5px;
+  font-size: .80em;
+  align-self: auto;
 }

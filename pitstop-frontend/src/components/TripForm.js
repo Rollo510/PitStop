@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createTrip } from '../redux/actions/tripActions'
+import { createTrip, getStops, getTrips } from '../redux/actions/tripActions'
 import StopForm from './StopForm'
 import '../index.css';
 import { withRouter } from 'react-router-dom'
@@ -15,11 +15,7 @@ class TripForm extends React.Component {
     submit = (e) => {
         e.preventDefault();
         let newValue = this.getValueOfName(e);
-        let stopPositions = [];
-        for (let i = 0; i < newValue.length; i++) {
-            stopPositions.push(this.props.markers[i])
-        }
-        this.props.createTrip(this.state, newValue, stopPositions)
+        this.props.createTrip(this.state, newValue)
         this.props.history.push("/trips")
     }
 
@@ -30,6 +26,9 @@ class TripForm extends React.Component {
             const newObj = {}
             let name = element[i].children[0].name.value
             let review = element[i].children[0].review.value
+            let marker = this.props.markers[i]
+            newObj['lat'] = marker.position.lat
+            newObj['lng'] = marker.position.lng
             newObj['name'] = name
             newObj['review'] = review
             newArray.push(newObj)
@@ -45,7 +44,8 @@ class TripForm extends React.Component {
                         key={marker.id}
                         name={this.state.name}
                         review={this.state.review}
-                        position={{ lat: marker.position.lat, lng: marker.position.lng }}
+                        lat={marker.position.lat}
+                        lng={marker.position.lng}
                         submit={this.submit}
                     />
                 )
@@ -56,7 +56,7 @@ class TripForm extends React.Component {
     render() {
         return (
             <div id="trip-form">
-                <h1> Create a new Trip: </h1>
+                <div id="trip-input">
                 <form onSubmit={this.submit}>
                     Username: {" "}
                     <input
@@ -73,6 +73,7 @@ class TripForm extends React.Component {
                     { this.generateMarkerForms() }
                     <input type="submit" value="Create New Trip" />
                 </form>
+                </div>
             </div>
         )
     }
@@ -85,4 +86,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, { createTrip })(TripForm))
+export default withRouter(connect(mapStateToProps, { createTrip, getStops, getTrips })(TripForm))

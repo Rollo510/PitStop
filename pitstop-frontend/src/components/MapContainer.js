@@ -37,7 +37,6 @@ class MapContainer extends Component {
         this.setState({
             marker: newMarker
         });
-        //this.props.newStop(this.state.marker)
     };
 
     generateMarkers = () => {
@@ -55,7 +54,7 @@ class MapContainer extends Component {
 
 
     render() {
-        return (<Map
+        return (<Map id="map-container"
             google={this.props.google}
             style={mapStyles}
             disableDoubleClickZoom

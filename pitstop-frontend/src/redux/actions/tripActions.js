@@ -6,13 +6,12 @@ export const getTrips = () => {
         )}
 }
 
-export const createTrip = (data, newValue, locations) => {
+export const createTrip = (data, newValue) => {
     return (dispatch) => {
         const newHash = {
             username:data.username,
             tripName:data.tripName,
             stops:newValue,
-            locations
         }
         fetch("http://localhost:3001/trips", {
             method: "POST",
@@ -23,8 +22,8 @@ export const createTrip = (data, newValue, locations) => {
             body: JSON.stringify(newHash),
         })
             .then(resp => resp.json())
-            .then(trip => 
-                dispatch({ type: "ADD_TRIP", payload: trip })
+            .then(data => 
+                dispatch({ type: "ADD_TRIP", payload: data })
             )
     }
 }
@@ -59,3 +58,15 @@ export const storeMarkers = (data) => {
     }
 }
 
+export const clearMarkers = () => {
+    return (dispatch) => {
+        dispatch( {type: "CLEAR_MARKERS"} )
+    }
+}
+
+export const changeCurrentTrip = (trip) => {
+    return (dispatch) => {
+        dispatch( {type: "CHANGE_CURRENT_TRIP", payload: trip })
+    }
+}
+ 
