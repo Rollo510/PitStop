@@ -2,6 +2,7 @@ import './App.css';
 import { connect } from 'react-redux'
 import React from 'react';
 import Home from './components/Home'
+import About from './components/About'
 import TripsIndex from './components/trip-list/TripsIndex'
 import TripForm from './components/TripForm'
 import StopsIndex from './components/stop-list/StopsIndex'
@@ -29,6 +30,9 @@ class App extends React.Component {
                 <NavItem eventkey={1} href="/stops">
                   <Nav.Link as={Link} to="/stops" >Take a Pitstop</Nav.Link>
                 </NavItem>
+                <NavItem eventkey={1} href="/about">
+                  <Nav.Link as={Link} to="/about" >About</Nav.Link>
+                </NavItem>
               </Nav>
               {/* <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -41,6 +45,7 @@ class App extends React.Component {
             <Route exact path="/trips" component={TripsIndex} />
             <Route path="/trips/new" component={TripForm} />
             <Route path="/stops" component={StopsIndex} />
+            <Route path="/about" component={About} />
           </Switch>
         </Router>
       </div>

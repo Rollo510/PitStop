@@ -12,6 +12,7 @@ class TripForm extends React.Component {
         tripName: "",
     }
 
+
     submit = (e) => {
         e.preventDefault();
         let newValue = this.getValueOfName(e);
