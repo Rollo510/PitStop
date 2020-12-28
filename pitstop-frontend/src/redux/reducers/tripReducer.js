@@ -1,11 +1,14 @@
-function tripReducer(state = { trips: [], stops: [], markers: [], current_trip: null, current_stop: {}, current_stops: [] }, action) {
+function tripReducer(state = { trips: [], stops: [], markers: [], current_trip: null, current_stop: {}, current_stops: [], users: [] }, action) {
     switch(action.type) {
 
         case "FETCH_TRIPS_SUCCESS":
-            return {...state, trips: action.payload };
+            return {...state, trips: action.payload }
 
         case "FETCH_STOPS_SUCCESS":
-            return {...state, stops: action.payload}
+            return {...state, stops: action.payload }
+
+        case "FETCH_USERS_SUCCESS":
+            return { ...state, users: action.payload }
 
         case "ADD_TRIP":
             return {...state, trips: [...state.trips, action.payload.trip], stops: [...state.stops, ...action.payload.stops]}
@@ -28,7 +31,6 @@ function tripReducer(state = { trips: [], stops: [], markers: [], current_trip: 
 
         case "CHANGE_CURRENT_STOP":
             return { ...state, current_stop: action.payload, markers: [{position: {lat: action.payload.lat, lng: action.payload.lng}}] }
-
 
         default:
             return state;

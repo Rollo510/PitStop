@@ -47,12 +47,21 @@ class MapContainer extends Component {
                     return (
                         <Marker 
                         key={marker.id}
+                        // onClick={(e) => this.deleteMarkers(e.position)}
                         position={{ lat: marker.position.lat, lng: marker.position.lng }}
                         />
                     )
                 }
             )
     }
+
+    
+    // deleteMarkers(position) {
+    //         let foundMarker = this.props.markers.find((element) => {
+    //             return element.position === position;
+    //         })
+    //         console.log(foundMarker)
+    //     }
 
 
     render() {

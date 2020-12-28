@@ -7,10 +7,6 @@ import ListGroup from 'react-bootstrap/ListGroup'
 
 class TripsIndex extends React.Component {
 
-    componentDidMount() {
-        // this.props.clearMarkers();
-    }
-
     handleClick = (trip_id) => {
         let foundTrip = this.props.trips.find(trip => (trip.id === parseInt(trip_id)))
         this.props.changeCurrentTrip(foundTrip);
@@ -29,7 +25,6 @@ class TripsIndex extends React.Component {
             </ListGroup.Item>
             )
         })
-
 
         return (
             <div className="trips-index-container">

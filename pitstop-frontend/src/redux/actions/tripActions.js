@@ -6,6 +6,15 @@ export const getTrips = () => {
         )}
 }
 
+export const getUsers = () => {
+    return (dispatch) => {
+        fetch("http://localhost:3001/users")
+            .then(resp => resp.json())
+            .then(users => dispatch({ type: "FETCH_USERS_SUCCESS", payload: users })
+            )
+    }
+}
+
 export const createTrip = (data, newValue) => {
     return (dispatch) => {
         const newHash = {

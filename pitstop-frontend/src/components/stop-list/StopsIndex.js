@@ -5,7 +5,6 @@ import { getTrips, clearMarkers, getStops, changeCurrentStop } from '../../redux
 import MapContainer from '../MapContainer'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Marker from 'google-maps-react'
-import ReviewPopup from '../ReviewPopup';
 
 class StopsIndex extends React.Component {
 
@@ -22,20 +21,12 @@ class StopsIndex extends React.Component {
         )
     }
 
-    togglePopup = (stop) => {
-        return (
-        <ReviewPopup review={stop.review} name={stop.name} />
-        )
-    }
-    
     render() {
 
         const allStops = this.props.stops.map(stop => {
             return (
                 <ListGroup.Item as="li"
                     onClick={(e) => this.handleClick(e.target.id)}
-                    onMouseEnter={() => this.togglePopup(stop)}
-                    onMouseLeave={() => this.togglePopup(stop)}
                     key={stop.id} id={stop.id} name={stop.name}
                 >
                     {stop.name}
