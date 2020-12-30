@@ -9,12 +9,13 @@ import ReviewsIndex from './components/ReviewsIndex'
 import StopsIndex from './components/stop-list/StopsIndex'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { getTrips, getStops } from './redux/actions/tripActions'
+import { getTrips, getStops, getUsers } from './redux/actions/tripActions'
 
 class App extends React.Component {
   componentDidMount() {
     this.props.getTrips();
     this.props.getStops();
+    this.props.getUsers();
   }
 
   render() {
@@ -62,5 +63,5 @@ const mapStateToProps = (state) => {
   return {}
 }
 
-export default connect(mapStateToProps, { getTrips, getStops })(App)
+export default connect(mapStateToProps, { getTrips, getStops, getUsers })(App)
 

@@ -2,17 +2,21 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
-import { getUsers } from '../redux/actions/tripActions'
+import { getUsers, getStops } from '../redux/actions/tripActions'
+import LikeCounter from './LikeCounter'
 
 class ReviewsIndex extends React.Component {
     
+    
+
     componentDidMount() {
         this.props.getUsers()
+        this.props.getStops()
     }
+
     
 
     render () {
-
 
         const stopReviews = this.props.stops.map(stop => {
             let foundName = this.props.users.find(user => user.id === stop.user_id)
@@ -28,9 +32,13 @@ class ReviewsIndex extends React.Component {
                         <Card.Header>{stop.name}</Card.Header>
                         <Card.Body>
                             <Card.Title> {foundName.username} says: </Card.Title>
-                            <Card.Text>
+                            <br></br>
+                            <Card.Text style={{ fontWeight: "bold" }}>
                                 {stop.review}
+                            <br></br>
+                            <br></br>
                             </Card.Text>
+                            <LikeCounter />
                         </Card.Body>
                     </Card>
                 </CardDeck>
@@ -46,8 +54,6 @@ class ReviewsIndex extends React.Component {
 
 }
 
-
-
     const mapStateToProps = (state) => {
         return {
             stops: state.stops,
@@ -56,4 +62,4 @@ class ReviewsIndex extends React.Component {
     }
 
 
-export default connect (mapStateToProps, { getUsers })(ReviewsIndex)
+export default connect (mapStateToProps, { getUsers, getStops })(ReviewsIndex)
